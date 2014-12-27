@@ -21,7 +21,6 @@ namespace JoystickBall
         private Joystick.Position currentPosition = new Joystick.Position();
         private GT.Timer joystickTimer;
         private int displayHeight, displayWidth = 0;
-        private bool invertXY = false;
         int inversion = 1;
 
 
@@ -38,6 +37,7 @@ namespace JoystickBall
             button.ButtonPressed += button_ButtonPressed;
             joystick.Calibrate();
             joystickTimer.Start();
+            multicolorLED.TurnRed();
         }
 
         private void JoystickTimerOnTick(GT.Timer timer)
@@ -49,6 +49,11 @@ namespace JoystickBall
         private void button_ButtonPressed(Button sender, Button.ButtonState state)
         {
             inversion *= -1;
+            if (inversion == 1) multicolorLED.TurnRed();
+            else multicolorLED.TurnBlue();
+            displayT43.SimpleGraphics.Clear();
+            currentPosition.X = displayWidth / 2.0;
+            currentPosition.Y = displayHeight / 2.0;
         }
 
         private void MoveCursor()
