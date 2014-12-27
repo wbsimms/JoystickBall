@@ -64,7 +64,6 @@ namespace JoystickBall
             double newY = joystickPosition.Y;
             joystickPosition = newJoystickPosition;
 
-
             // did we actually move...
             if (System.Math.Abs(newX) >= 0.03) { realX = newX; }
             if (System.Math.Abs(newY) >= 0.03) { realY = newY; }
@@ -75,7 +74,6 @@ namespace JoystickBall
             currentPosition.Y += (realY * 5) * inversion;
 
             bool justchangedY = false;
-
             if (realX + currentPosition.X >= displayWidth) currentPosition.X = 0;
             if (realX + currentPosition.X <= 0) currentPosition.X = displayWidth;
             if (realY + currentPosition.Y >= displayHeight)
@@ -87,7 +85,6 @@ namespace JoystickBall
             {
                 currentPosition.Y = displayHeight;
             }
-
             displayT43.SimpleGraphics.DisplayEllipse(Gadgeteer.Color.Orange, 1,Gadgeteer.Color.White, (int)currentPosition.X, (int)currentPosition.Y, 2, 2);
         }
     }
